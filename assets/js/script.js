@@ -7,6 +7,7 @@ const roundPlayer2 = document.querySelector('.roundScore2')
 const roll = document.querySelector('.playerRoll ')
 const hold = document.querySelector('.playerHold ')
 const newGame = document.querySelector('.newGame button')
+const score = document.querySelector('.score')
 
 let turn = 0
 let round = 0
@@ -28,22 +29,23 @@ function createPlayerName() {
 
 
 function rollDice() {
-    const dice = [...document.querySelectorAll(".dice-list")];
-    dice.forEach(die => {
-        toggleClasses(die);
-        die.dataset.roll = getRandomNumber(1, 6);
+    const dice = [...document.querySelectorAll(".dice-list")]
+    console.log(dice)
+    dice.forEach(dice => {
+        toggleClasses(dice)
+        dice.dataset.roll = getRandomNumber(1, 6)
     });
 }
 
-function toggleClasses(die) {
-    die.classList.toggle("odd-roll");
-    die.classList.toggle("even-roll");
+function toggleClasses(dice) {
+    dice.classList.toggle("odd-roll")
+    dice.classList.toggle("even-roll")
 }
 
 function getRandomNumber(min, max) {
-    min = Math.ceil(min);
-    max = Math.floor(max);
-    return Math.floor(Math.random() * (max - min + 1)) + min;
+    min = Math.ceil(min)
+    max = Math.floor(max)
+    return Math.floor(Math.random() * (max - min + 1)) + min
 }
 
 function init() {
