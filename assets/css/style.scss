@@ -36,17 +36,21 @@ $backgroundLightHover: rgba(189, 184, 184, 0.8);
     background: rgb(216, 87, 87) url($backgroundImg2) no-repeat center ;
 }
 .player1Name, .player2Name {
-    padding: 1vh 3vw;
-    margin-top: 18vh;
-    color: white;
-    border-radius: 15px;
-    text-align: center;
-    font-size: 3em;
+  padding: 1vh 3vw;
+  margin-top: 18vh;
+  color: white;
+  border-radius: 15px;
+  text-align: center;
+  font-size: 3em;
+  height: 10vh;
+}
+.active {
+  background-color: rgb(246, 181, 30);
 }
 
 .score {
     position: relative;
-    top: 49vh;
+    top: 40vh;
     padding: 20px 40px;
     border-radius: 15px;
     background: $backgroundLight;
