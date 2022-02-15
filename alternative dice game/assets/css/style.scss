@@ -1,3 +1,5 @@
+$backgroundImg1: "../images/AdobeStock_453070106.svg";
+$backgroundImg2: "../images/fichier 1.svg";
 $backgroundLight: rgba(141, 140, 140, 0.8);
 $backgroundLightHover: rgba(189, 184, 184, 0.8);
 
@@ -8,61 +10,122 @@ $backgroundLightHover: rgba(189, 184, 184, 0.8);
 
  body {
     font-family: 'Lato', sans-serif;
-    display: flex;
-    justify-content: center;
-    align-items: center;
 }
 
 .container {
-  top: 10%;
-  margin: auto;
-}
-
-.containerPlayer {
-    z-index: -1;
+    width: 100vw;
+    position: absolute;
     top: 0;
+    z-index: -1;
 }
 
+.player1, .player2 {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: absolute;
+    width: 50%;
+    height: 100vh;
+}
 .player1 {
-    background-color: lightblue;
+    left: 0;
+    background: rgb(70, 70, 149) url($backgroundImg1) no-repeat center ;
 }
 .player2 {
-    background-color: lightsalmon;
-  
+    right: 0;
+    background: rgb(216, 87, 87) url($backgroundImg2) no-repeat center ;
 }
 .player1Name, .player2Name {
-  margin-top: 10vh;
+  padding: 1vh 3vw;
+  margin-top: 18vh;
+  color: white;
+  border-radius: 15px;
+  text-align: center;
+  font-size: 3em;
   height: 10vh;
-  font-size: 5em;
 }
-
-/*
-  class active
-*/
 .active {
-  background-color: rgb(223, 223, 223);
+  background-color: rgb(246, 181, 30);
 }
 
 .score {
-  top: 41vh;
-  padding: 20px 40px;
-  border-radius: 15px;
+    position: relative;
+    top: 40vh;
+    padding: 20px 40px;
+    border-radius: 15px;
+    background: $backgroundLight;
+}
+.score h3 {
+    text-align: center;
+    font-size: 1.9em;
+    color: white;
+    text-shadow: 2px 2px 2px rgb(37, 29, 83), -2px -2px 2px rgb(37, 29, 83);
 }
 /* 
     Création de l'interface des joueurs
 */
 
+.containerInfos {
+    width: 100vw;
+    height: 100vh;
+    display: grid;
+}
+
+.newGame, .diceContainer, .player {
+    margin: 0 auto;
+    display: flex;
+}
+
 .newGame, .player {
+    flex-direction: column;
+    justify-content: center;
+    height: 20%;
     min-height: 150px;
+    
 }
 
+.newGame button {
+    font-size: 2.5em;
+    color: white;
+    text-shadow: 2px 2px 5px black;
+    box-shadow: 2px 2px 5px black;
+    background: rgba(150, 150, 150, 0.6);
+    border-radius: 15px;
+    padding: 10px 20px;
+}
+.newGame button:hover {
+    background: $backgroundLight;
+    box-shadow: 2px 2px 3px rgb(170, 170, 170);
+}
+
+.player {
+    justify-content: space-between;
+}
+
+.playerRoll, .playerHold {
+    background-color: $backgroundLight;
+    padding: 15px;
+    border-radius: 15px;
+    box-shadow: 1px 1px 5px black;
+    text-align: center;
+    font-size: 1.9em;
+    color: white;
+    text-shadow: 2px 2px 2px rgb(37, 29, 83), -2px -2px 2px rgb(37, 29, 83);
+}
+.playerRoll:hover, .playerHold:hover {
+    background-color: $backgroundLightHover;
+    box-shadow: none;
+}
+.playerHold {
+    font-size: 1.8em;
+    margin-top: 30px;
+}
 p {
+    text-align: center;
+    margin: 5%;
+    font-size: 4em;
+    color: aliceblue;
     text-shadow: 1px 1px 3px black;
-}
-
-.win {
-  width: 100vw;
-  background-color: aquamarine;
 }
 
 /*
@@ -116,10 +179,10 @@ p {
       "seven eight nine";
     grid-template-columns: repeat(3, 1fr);
     grid-template-rows: repeat(3, 1fr);
-    height: 133%;
+    height: 100%;
     padding: 1rem;
-    width: 133%;
-
+    width: 100%;
+    border-radius: 15px;
   }
   .dot {
     align-self: center;
@@ -130,9 +193,6 @@ p {
     height: 1.25rem;
     justify-self: center;
     width: 1.25rem;
-  }
-  .dot_1 {
-    background-color: green;
   }
   .even-roll[data-roll="1"] {
     transform: rotateX(360deg) rotateY(720deg) rotateZ(360deg);

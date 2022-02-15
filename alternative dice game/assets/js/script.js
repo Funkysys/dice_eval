@@ -64,7 +64,7 @@ function roundScore(dice) {
 function nextPlayer(dice, divPlayer, otherDivPlayer, roundPlayer, scorePlayer, printScorePlayer) {
     if(dice == 1){
             changePlayer(divPlayer, otherDivPlayer, roundPlayer)
-            // printScore(scorePlayer, printScorePlayer)
+            printScore(scorePlayer, printScorePlayer)
             return scorePlayer
     }
 }
@@ -133,7 +133,7 @@ function init() {
 }
 
 roll.addEventListener("click", () => {
-    if (namePlayer1.textContent !== "") {
+    if (player1 !== "") {
         rollDice()
     } else {
         init()
