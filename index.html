@@ -12,14 +12,14 @@
 </head>
 <body>
     <main class="container position-absolute h-75 w-100 ">  
-        <div class="containerInfos container w-100 h-75 row align-items-center py-1 px-1">
-            <div class="newGame m-auto d-flex flex-column justify-content-center col-4">
+        <div class="containerInfos container w-100 h-75 row align-items-center py-1 px-1 ">
+            <div class="newGame m-auto d-flex flex-column justify-content-center col-4 row">
                 <button class=" btn fs-2 text-center">
                     <h2><i class="bi bi-plus-circle text-danger"></i> NEW GAME</h2>
                 </button>
             </div>
-            <div class="diceContainer m-auto d-flex">
-                <div class="dice">
+            <div class="diceContainer m-auto d-flex justify-content-center align-items-center h-50">
+                <div class="dice p-2">
                     <ol class="dice-list even-roll" data-roll="1" id="die-1">
                       <li class="dice-item" data-side="1">
                         <span class="dot dot_1"></span>
@@ -57,15 +57,15 @@
                     </ol>  
                 </div>
             </div>
-            <div class="player m-auto d-flex flex-column justify-content-space-between col-4">
+            <div class="player m-auto d-flex flex-column justify-content-space-between col-4 row">
                     <button class="playerRoll btn fs-2  text-center"><i class="bi bi-arrow-clockwise text-danger"></i>ROLL DICE</button>
                     <button class="playerHold btn fs-2 text-center my-4"><i class="bi bi-box-arrow-in-down text-danger"></i>HOLD</button>
             </div>
         </div>
         <div class="containerPlayer container position-absolute w-100 h-100 p-auto">
-            <div class="player1 position-absolute start-0 w-50 h-100 w-sm-100 f-sm-50 d-flex flex-column align-items-center justify-content-around border col-4">
+            <div class="player1 position-absolute  start-0 w-50 h-100 w-sm-100 f-sm-50 d-flex flex-column align-items-center justify-content-around border col-4">
                 <div class="player1Name text-center">
-                    <h2>Antoine</h2>
+                    <h2></h2>
                     <h4 class="win1 text-white fs-1 my-4 text-center"></h4>
                     <p class="roundScore1 text-center m-5 text-white "></p>
                 </div>
@@ -74,9 +74,9 @@
                     <p>0</p>
                 </div>
             </div>
-            <div class="player2 position-absolute end-0 w-50 h-100 w-sm-100 f-sm-50 d-flex flex-column align-items-center justify-content-around border col-4">
+            <div class="player2 position-absolute  end-0 w-50 h-100 w-sm-100 f-sm-50 d-flex flex-column align-items-center justify-content-around border col-4">
                 <div class="player2Name text-center">
-                    <h2>Arthur</h2>
+                    <h2></h2>
                     <h4 class="win2 text-white fs-1 my-4 text-center"></h4>
                     <p class="roundScore2 text-center m-5 text-white"></p>
                 </div>

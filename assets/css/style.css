@@ -27,10 +27,14 @@ body {
 
 .player1 {
   background-color: lightblue;
+  top: -100px;
+  opacity: 0;
 }
 
 .player2 {
   background-color: lightsalmon;
+  top: 100px;
+  opacity: 0;
 }
 
 .player1Name, .player2Name {
@@ -54,11 +58,25 @@ p {
   border-radius: 15px;
 }
 
+.scorePlayer1 {
+  opacity: 0;
+  left: -200px;
+}
+
+.scorePlayer2 {
+  opacity: 0;
+  right: -200px;
+}
+
 /* 
     Création de l'interface des joueurs
 */
 .newGame, .player {
   min-height: 150px;
+}
+
+.newGame, .player, .dice {
+  opacity: 0;
 }
 
 p {
@@ -74,23 +92,11 @@ p {
     Création du dé
 */
 .diceContainer {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
   height: 60%;
   min-height: 200px;
 }
 
 .dice {
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
   display: -ms-grid;
   display: grid;
   grid-gap: 2rem;
@@ -99,7 +105,6 @@ p {
   -ms-grid-rows: auto;
       grid-template-rows: auto;
   justify-items: center;
-  padding: 2rem;
   -webkit-perspective: 600px;
           perspective: 600px;
 }
@@ -116,7 +121,7 @@ p {
   -webkit-transform-style: preserve-3d;
           transform-style: preserve-3d;
   width: 6rem;
-  border-radius: 15px;
+  border-radius: 50%;
 }
 
 .even-roll {

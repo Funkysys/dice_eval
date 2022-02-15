@@ -25,10 +25,13 @@ $backgroundLightHover: rgba(189, 184, 184, 0.8);
 
 .player1 {
     background-color: lightblue;
+    top: -100px;
+    opacity: 0;
 }
 .player2 {
     background-color: lightsalmon;
-  
+    top: 100px;
+    opacity: 0;
 }
 .player1Name, .player2Name {
   height: 10vh;
@@ -49,6 +52,15 @@ p {
   padding: 20px 40px;
   border-radius: 15px;
 }
+.scorePlayer1 {
+  opacity: 0;
+  left: -200px;
+}
+.scorePlayer2 {
+  opacity: 0;
+  right: -200px;
+}
+
 /* 
     Création de l'interface des joueurs
 */
@@ -56,7 +68,9 @@ p {
 .newGame, .player {
     min-height: 150px;
 }
-
+.newGame, .player, .dice {
+  opacity: 0;
+}
 p {
     text-shadow: 1px 1px 3px black;
 }
@@ -71,21 +85,16 @@ p {
 */
 
 .diceContainer {
-    display: flex;
-    justify-content: center;
-    align-items: center;
     height: 60%;
     min-height: 200px;
 }
 
 .dice {
-    align-items: center;
     display: grid;
     grid-gap: 2rem;
     grid-template-columns: repeat(auto-fit, minmax(8rem, 1fr));
     grid-template-rows: auto;
     justify-items: center;
-    padding: 2rem;
     perspective: 600px;
   }
   .dice-list {
@@ -96,7 +105,7 @@ p {
     list-style-type: none;
     transform-style: preserve-3d;
     width: 6rem;
-    border-radius: 15px;
+    border-radius: 50%;
   }
   .even-roll {
     transition: transform 1.5s ease-out;

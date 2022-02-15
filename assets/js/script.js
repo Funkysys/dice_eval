@@ -12,6 +12,7 @@ const printScorePlayer2 = document.querySelector('.scorePlayer2 p')
 const scores = document.querySelectorAll('.score')
 const winner1 = document.querySelector('.win1')
 const winner2 = document.querySelector('.win2')
+const dice = [...document.querySelectorAll(".dice-list")]
 let turn = 1
 let global = 0
 let round = 0
@@ -19,6 +20,25 @@ let scorePlayer1 = 0
 let scorePlayer2 = 0
 let player1 = ""
 let player2 = ""
+
+window.addEventListener('load', () => {
+    const TLInit = gsap.timeline({
+        default: {
+            ease: 'power2',
+            duration: 1.2
+        }
+    })
+    TLInit
+    .to(divPlayer1, {y: "+100", opacity : '1', duration: 1.2})
+    .to(divPlayer2, {y: "-100", opacity : '1'}, '-=0.6')
+    .to(namePlayer1, {opacity : '1'}, '-=0.6')
+    .to(namePlayer2, {opacity : '1'}, '-=0.6')
+    .to('.dice', {opacity: 1})
+    .to(".scorePlayer1", {opacity : "1", x: '+200'}, '-=0.6')
+    .to(".scorePlayer2", {opacity : "1", x: '-200'}, '-=0.6')
+    .to('.newGame', {opacity: 1})
+    .to('.player', {opacity: 1}, '-=0.5')
+})
 
 // création de la fonction win
 
@@ -91,8 +111,8 @@ function printScore(scorePlayer, printScorePlayer){
 // animation du dé
 
 function rollDice() {
-    const dice = [...document.querySelectorAll(".dice-list")]
     dice.forEach(dice => {
+        
         toggleClasses(dice)
         dice.dataset.roll = getRandomNumber(1, 6)
         if (turn === 1) {
