@@ -88,6 +88,10 @@ p {
   background-color: #e0ae6d;
 }
 
+h4 {
+  opacity: 0;
+}
+
 /*
     Création du dé
 */
