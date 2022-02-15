@@ -9,6 +9,9 @@ const hold = document.querySelector('.playerHold ')
 const newGame = document.querySelector('.newGame button')
 const printScorePlayer1 = document.querySelector('.scorePlayer1 p')
 const printScorePlayer2 = document.querySelector('.scorePlayer2 p')
+const scores = document.querySelectorAll('.score')
+const winner1 = document.querySelector('.win1')
+const winner2 = document.querySelector('.win2')
 let turn = 1
 let global = 0
 let round = 0
@@ -19,12 +22,15 @@ let player2 = ""
 
 // création de la fonction win
 
-function win(playerName, roundScore, divPlayer, divOtherPlayer, printScorePlayer, round) {
+function win(playerName, roundScore, divPlayer, divOtherPlayer, printScorePlayer, round, winner) {
     if ((parseInt(printScorePlayer.textContent) + round) >= 100) {
-        divPlayer.style.background = "blue"
-        divPlayer.style.width = "100vw"
-        console.log('win');
-        roundScore.innerText = `${playerName.textContent} Vous avez gagnez !`
+        divPlayer.classList.add('win')
+        console.log(winner)
+        winner.innerText = `${playerName.textContent} Vous avez gagnez !`
+        roundScore.innerText = ""
+        playerName.style.display = 'none'
+        scores[0].style.opacity = "0"
+        scores[1].style.opacity = "0"
         roll.style.display = 'none'
         hold.style.display = 'none'
         divOtherPlayer.style.opacity = '0'
@@ -93,14 +99,14 @@ function rollDice() {
             roundScore(dice.dataset.roll, scorePlayer1)
             scorePlayer1 += parseInt(dice.dataset.roll)
             roundPlayer1.innerText = round
-            win(namePlayer1, roundPlayer1, divPlayer1, divPlayer2, printScorePlayer1, round)
+            win(namePlayer1, roundPlayer1, divPlayer1, divPlayer2, printScorePlayer1, round, winner1)
             nextPlayer(dice.dataset.roll, divPlayer2, divPlayer1, roundPlayer1, scorePlayer1, printScorePlayer1)
             return turn
         }  else if(turn === 2){
             roundScore(dice.dataset.roll, scorePlayer2)
             scorePlayer2 += parseInt(dice.dataset.roll)
             roundPlayer2.innerText = round
-            win(namePlayer2, roundPlayer1, divPlayer2,  divPlayer1, printScorePlayer2, round)
+            win(namePlayer2, roundPlayer1, divPlayer2,  divPlayer1, printScorePlayer2, round, winner2)
             nextPlayer(dice.dataset.roll,  divPlayer1, divPlayer2, roundPlayer2, scorePlayer2, printScorePlayer2)
             return turn
         } 
@@ -125,10 +131,14 @@ function init() {
     divPlayer1.classList.add('active')
     divPlayer1.style.width = "50vw"
     divPlayer2.style.width = "50vw"
-    roll.style.opacity = '1'
-    hold.style.opacity = '1'
+    roll.style.display = 'block'
+    hold.style.display = 'block'
     divPlayer1.style.opacity = '1'
     divPlayer2.style.opacity = '1'
+    namePlayer1.style.opqcity = '1'
+    namePlayer2.style.opqcity = '1'
+    scores[0].style.opacity = "1"
+    scores[1].style.opacity = "1"
     createPlayerName()
 }
 
@@ -149,8 +159,6 @@ hold.addEventListener('click', () => {
         } else {
             holdScore(roundPlayer2, printScorePlayer2, round, divPlayer1, divPlayer2)
         }
-    } else {
-        return console.log("pas cool");
     }
     return round = 0
 })

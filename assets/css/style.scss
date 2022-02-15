@@ -31,20 +31,21 @@ $backgroundLightHover: rgba(189, 184, 184, 0.8);
   
 }
 .player1Name, .player2Name {
-  margin-top: 10vh;
   height: 10vh;
-  font-size: 5em;
+  font-size: 4em;
 }
 
+p {
+  font-size: 2em;
+}
 /*
   class active
 */
 .active {
-  background-color: rgb(223, 223, 223);
+  background-color: rgb(236, 236, 236);
 }
 
 .score {
-  top: 41vh;
   padding: 20px 40px;
   border-radius: 15px;
 }
@@ -62,7 +63,7 @@ p {
 
 .win {
   width: 100vw;
-  background-color: aquamarine;
+  background-color: rgb(224, 174, 109);
 }
 
 /*
