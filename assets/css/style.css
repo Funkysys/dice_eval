@@ -4,25 +4,16 @@
  */
 body {
   font-family: 'Lato', sans-serif;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
+  padding: auto;
 }
 
 .container {
-  top: 10%;
-  margin: auto;
+  z-index: -1;
 }
 
 .containerPlayer {
-  z-index: -1;
   top: 0;
+  width: 100vw;
 }
 
 .player1 {
@@ -54,8 +45,11 @@ p {
 }
 
 .score {
-  padding: 20px 40px;
+  min-width: 100px;
   border-radius: 15px;
+  padding: auto;
+  font-size: 2em;
+  background-color: #d63e5d;
 }
 
 .scorePlayer1 {
@@ -72,7 +66,7 @@ p {
     Création de l'interface des joueurs
 */
 .newGame, .player {
-  min-height: 150px;
+  min-height: 200px;
 }
 
 .newGame, .player, .dice {
@@ -81,6 +75,10 @@ p {
 
 p {
   text-shadow: 1px 1px 3px black;
+}
+
+.player button {
+  font-size: 1.6em;
 }
 
 .win {
@@ -95,15 +93,10 @@ h4 {
 /*
     Création du dé
 */
-.diceContainer {
-  height: 60%;
-  min-height: 200px;
-}
-
 .dice {
   display: -ms-grid;
   display: grid;
-  grid-gap: 2rem;
+  grid-gap: 4rem;
   -ms-grid-columns: (minmax(8rem, 1fr))[auto-fit];
       grid-template-columns: repeat(auto-fit, minmax(8rem, 1fr));
   -ms-grid-rows: auto;
@@ -116,16 +109,13 @@ h4 {
 .dice-list {
   display: -ms-grid;
   display: grid;
-  -ms-grid-columns: 1fr;
-      grid-template-columns: 1fr;
-  -ms-grid-rows: 1fr;
-      grid-template-rows: 1fr;
-  height: 6rem;
+  -ms-grid-columns: 0.5fr;
+      grid-template-columns: 0.5fr;
+  -ms-grid-rows: 0.5fr;
+      grid-template-rows: 0.5fr;
   list-style-type: none;
   -webkit-transform-style: preserve-3d;
           transform-style: preserve-3d;
-  width: 6rem;
-  border-radius: 50%;
 }
 
 .even-roll {
@@ -143,7 +133,7 @@ h4 {
 }
 
 .dice-item {
-  background-color: #fefefe;
+  background-color: #ffffff;
   -webkit-box-shadow: inset -0.35rem 0.35rem 0.75rem rgba(0, 0, 0, 0.3), inset 0.5rem -0.25rem 0.5rem rgba(0, 0, 0, 0.15);
           box-shadow: inset -0.35rem 0.35rem 0.75rem rgba(0, 0, 0, 0.3), inset 0.5rem -0.25rem 0.5rem rgba(0, 0, 0, 0.15);
   display: -ms-grid;
@@ -157,9 +147,9 @@ h4 {
       grid-template-columns: repeat(3, 1fr);
   -ms-grid-rows: (1fr)[3];
       grid-template-rows: repeat(3, 1fr);
-  height: 133%;
-  padding: 1rem;
-  width: 133%;
+  height: 100%;
+  padding: 1.1rem;
+  width: 100%;
 }
 
 .dot {
@@ -395,5 +385,25 @@ h4 {
   -ms-grid-row: 3;
   -ms-grid-column: 3;
   grid-area: nine;
+}
+
+@media screen and (max-width: 540px) {
+  .container {
+    top: 0;
+    width: 100vw;
+    height: 100%;
+  }
+  .newGame {
+    font-size: 3em;
+  }
+  .score {
+    width: 20%;
+    font-size: 1em;
+    background: rgba(221, 70, 70, 0.4);
+  }
+  .player1Name, .player2Name {
+    margin-top: 25vh;
+    font-size: 1.5em;
+  }
 }
 /*# sourceMappingURL=style.css.map */

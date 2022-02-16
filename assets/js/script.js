@@ -34,11 +34,11 @@ window.addEventListener('load', () => {
     .to(divPlayer2, {y: "-100", opacity : '1'}, '-=0.6')
     .to(namePlayer1, {opacity : '1'}, '-=0.6')
     .to(namePlayer2, {opacity : '1'}, '-=0.6')
-    .to('.dice', {opacity: 1, y: -50})
+    .to('.player', {opacity: 1}, '-=0.5')
     .to(".scorePlayer1", {opacity : "1", x: '+200'}, '-=0.6')
     .to(".scorePlayer2", {opacity : "1", x: '-200'}, '-=0.6')
-    .to('.newGame', {opacity: 1, y: -40})
-    .to('.player', {opacity: 1}, '-=0.5')
+    .to('.newGame', {opacity: 1, y: -40}, '-=0.4')
+    .to('.dice', {opacity: 1, y: -50}, '-=0.2')
 })
 
 // création de la fonction win
