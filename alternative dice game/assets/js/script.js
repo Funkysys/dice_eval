@@ -14,12 +14,13 @@ const winner1 = document.querySelector('.win1')
 const winner2 = document.querySelector('.win2')
 const dice = [...document.querySelectorAll(".dice-list")]
 let turn = 1
-let global = 0
 let round = 0
 let scorePlayer1 = 0
 let scorePlayer2 = 0
 let player1 = ""
 let player2 = ""
+
+// Animation d'ouverture
 
 window.addEventListener('load', () => {
     const TLInit = gsap.timeline({
@@ -33,11 +34,11 @@ window.addEventListener('load', () => {
     .to(divPlayer2, {y: "-100", opacity : '1'}, '-=0.6')
     .to(namePlayer1, {opacity : '1'}, '-=0.6')
     .to(namePlayer2, {opacity : '1'}, '-=0.6')
-    .to('.dice', {opacity: 1})
+    .to('.player', {opacity: 1}, '-=0.5')
     .to(".scorePlayer1", {opacity : "1", x: '+200'}, '-=0.6')
     .to(".scorePlayer2", {opacity : "1", x: '-200'}, '-=0.6')
-    .to('.newGame', {opacity: 1})
-    .to('.player', {opacity: 1}, '-=0.5')
+    .to('.newGame', {opacity: 1, y: -40}, '-=0.4')
+    .to('.dice', {opacity: 1, y: -50}, '-=0.2')
 })
 
 // création de la fonction win
@@ -45,8 +46,8 @@ window.addEventListener('load', () => {
 function win(playerName, roundScore, divPlayer, divOtherPlayer, printScorePlayer, round, winner) {
     if ((parseInt(printScorePlayer.textContent) + round) >= 100) {
         divPlayer.classList.add('win')
-        console.log(winner)
-        winner.innerText = `${playerName.textContent} Vous avez gagnez !`
+        winner.innerText = `${playerName.textContent} \nVous avez gagnez !`
+        gsap.to(winner, {opacity: "1", duration: 1.2})
         roundScore.innerText = ""
         playerName.style.display = 'none'
         scores[0].style.opacity = "0"
@@ -90,7 +91,6 @@ function roundScore(dice) {
 function nextPlayer(dice, divPlayer, otherDivPlayer, roundPlayer, scorePlayer, printScorePlayer) {
     if(dice == 1){
             changePlayer(divPlayer, otherDivPlayer, roundPlayer)
-            // printScore(scorePlayer, printScorePlayer)
             return scorePlayer
     }
 }
@@ -101,18 +101,16 @@ function changePlayer(divPlayer, otherDivPlayer, roundPlayer) {
     roundPlayer.textContent = '';
     turn === 1 ? turn = 2 : turn = 1
 }
-// affichage score du joueur
-
-function printScore(scorePlayer, printScorePlayer){
-    printScorePlayer.textContent = scorePlayer
-    return scorePlayer + round
-}
 
 // animation du dé
 
 function rollDice() {
     dice.forEach(dice => {
-        
+        console.log(scorePlayer1);
+        console.log(scorePlayer2);
+        console.log(round);
+        console.log(roundPlayer1);
+        console.log(roundPlayer2);
         toggleClasses(dice)
         dice.dataset.roll = getRandomNumber(1, 6)
         if (turn === 1) {
@@ -126,7 +124,7 @@ function rollDice() {
             roundScore(dice.dataset.roll, scorePlayer2)
             scorePlayer2 += parseInt(dice.dataset.roll)
             roundPlayer2.innerText = round
-            win(namePlayer2, roundPlayer1, divPlayer2,  divPlayer1, printScorePlayer2, round, winner2)
+            win(namePlayer2, roundPlayer2, divPlayer2,  divPlayer1, printScorePlayer2, round, winner2)
             nextPlayer(dice.dataset.roll,  divPlayer1, divPlayer2, roundPlayer2, scorePlayer2, printScorePlayer2)
             return turn
         } 
@@ -148,18 +146,40 @@ function getRandomNumber(min, max) {
 // Init
 
 function init() {
-    divPlayer1.classList.add('active')
-    divPlayer1.style.width = "50vw"
-    divPlayer2.style.width = "50vw"
-    roll.style.display = 'block'
-    hold.style.display = 'block'
-    divPlayer1.style.opacity = '1'
-    divPlayer2.style.opacity = '1'
-    namePlayer1.style.opqcity = '1'
-    namePlayer2.style.opqcity = '1'
-    scores[0].style.opacity = "1"
-    scores[1].style.opacity = "1"
-    createPlayerName()
+    
+    const TLInit = gsap.timeline({
+        default: {
+            ease: 'power2',
+            duration: 1.2
+        }
+    })
+    TLInit
+    .to(divPlayer1, {opacity : '1'})
+    .to(divPlayer2, {opacity : '1'}, '-=0.6')
+    .to(namePlayer1, {opacity : '1'}, '-=0.6')
+    .to(namePlayer2, {opacity : '1'}, '-=0.6')
+    .to(scores[0], {opacity : '1'}, '-=0.6')
+    .to(scores[1], {opacity : '1'}, '-=0.6')
+    .add(() => {
+        round = 0
+        divPlayer1.classList.remove('win')
+        divPlayer2.classList.remove('win')
+        divPlayer1.classList.add('active')
+        divPlayer2.classList.remove('active')
+        divPlayer1.style.width = "50vw"
+        divPlayer2.style.width = "50vw"
+        roll.style.display = 'block'
+        hold.style.display = 'block'
+        namePlayer1.style.display = 'block'
+        namePlayer2.style.display = 'block'
+        printScorePlayer1.textContent = 0
+        printScorePlayer2.textContent = 0
+        scorePlayer1 = 0
+        scorePlayer2 = 0
+        winner1.innerText = ""
+        winner2.innerText = ""
+    })
+    .add(createPlayerName())
 }
 
 roll.addEventListener("click", () => {
