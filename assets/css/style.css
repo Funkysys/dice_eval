@@ -7,7 +7,7 @@ body {
   padding: auto;
 }
 
-.container {
+.containerPlayer {
   z-index: -1;
 }
 
@@ -78,6 +78,7 @@ p {
 }
 
 .player button {
+  margin-top: 10vh;
   font-size: 1.6em;
 }
 
@@ -396,14 +397,18 @@ h4 {
   .newGame {
     font-size: 3em;
   }
-  .score {
-    width: 20%;
-    font-size: 1em;
-    background: rgba(221, 70, 70, 0.4);
-  }
   .player1Name, .player2Name {
-    margin-top: 25vh;
+    margin-top: 15vh;
     font-size: 1.5em;
+  }
+  .score {
+    margin-top: 6vh;
+    font-size: 1em;
+    background: rgba(221, 70, 70, 0.8);
+  }
+  .player button {
+    font-size: 1.2em;
+    margin: 5vh auto;
   }
 }
 /*# sourceMappingURL=style.css.map */
