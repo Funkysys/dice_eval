@@ -11,11 +11,28 @@
     <link rel="stylesheet" href="assets/css/style.css">
 </head>
 <body>  
-    <div class="containerInfos text-center">
-      <div class="newGame m-auto d-flex flex-column justify-content-center col-md-4 col-sm-8">
-            <button class=" btn fs-2">
-                <h2><i class="bi bi-plus-circle text-danger"></i> NEW GAME</h2>
-            </button>
+    <div class="containerInfos text-center d-flex flex-column align-items-center">
+      <div class="rules">
+        <p>Deux joueurs s'amusent aux lancers d'un dé à 6 faces.<br/>
+            Chaque joueur possède un score actuel (ROUND) et un score global (GLOBAL) débutant à 0.<br/>
+            À chaque tour, le joueur a son ROUND initialisé à 0 et peut lancer un dé autant de fois qu'il le souhaite.<br/>
+            Le résultat d’un lancer est ajouté au ROUND.<br/>
+            Lors de son tour, le joueur actif peut décider de :<br/>
+              - cliquer sur HOLD, ce qui permet d’envoyer les points du ROUND vers le GLOBAL.<br/> 
+          Ce sera alors le tour de l’autre joueur de jouer.<br/>
+              - lancer ou relancer le dé.<br/> 
+          S’il obtient un 1, son score ROUND est perdu et c’est la fin de son tour.<br/>          
+            Le premier joueur qui atteint ou dépasse les 100 points sur GLOBAL gagne la partie. 
+        </p>
+        <button class="close">Close</button>
+      </div>
+      <div class="newGame m-auto d-flex flex-column justify-content-center col-xl-2 col-md-4 col-sm-8">
+        <button class="fs-2">
+            <h2><i class="bi bi-plus-circle text-danger"></i> NEW GAME</h2>
+        </button>
+        <button class="fs-2 col-8 mx-auto">
+          <h3>Game Rules</h2>
+        </button>
       </div>
       <div class="diceContainer d-flex justify-content-center align-items-center">
           <div class="dice p-2">
@@ -56,31 +73,31 @@
               </ol>  
           </div>
       </div>
-      <div class="player m-auto text-center d-flex flex-column justify-content-center align-items-center col-3">
+      <div class="player text-center d-flex flex-column col-md-2 col-sm-3 col-xs-4">
         <button class="playerRoll btn"><i class="bi bi-arrow-clockwise text-danger"></i>ROLL DICE</button>
-        <button class="playerHold btn my-3"><i class="bi bi-box-arrow-in-down text-danger"></i>HOLD</button>
+        <button class="playerHold btn"><i class="bi bi-box-arrow-in-down text-danger"></i>HOLD</button>
       </div>
-      <div class="containerPlayer position-absolute w-100 h-100 p-auto">
+      <div class="containerPlayer position-absolute p-auto">
         <div class="player1 position-relative start-0 w-50 h-100 d-flex flex-column align-items-center justify-content-center border">
             <div class="player1Name text-center ">
                 <h2></h2>
                 <h4 class="win1 text-white fs-1 my-4 text-center"></h4>
-                <p class="roundScore1 text-center text-white "></p>
+                <p class="roundScore1 white-text text-center text-white "></p>
             </div>
-            <div class="score scorePlayer1 position-relative px-auto py-3 text-center text-white">
-                <h3 >Score</h3>
-                <p>0</p>
+            <div class="score scorePlayer1 position-relative px-auto py-3 text-center text-white col-4">
+                <h3>Score</h3>
+                <p class="white-text">0</p>
             </div>
         </div>
         <div class="player2 position-absolute end-0 w-50 h-100 d-flex flex-column align-items-center justify-content-center border ">
               <div class="player2Name">
                   <h2></h2>
                   <h4 class="win2 text-white fs-1 my-4 text-center"></h4>
-                  <p class="roundScore2 text-center m-5 text-white"></p>
+                  <p class="roundScore2 white-text text-center m-5 text-white"></p>
               </div>
               <div class="score scorePlayer2 position-relative px-auto py-3 text-center text-white col-4 ">
                   <h3 >Score</h3>
-                  <p>0</p>
+                  <p class="white-text">0</p>
               </div>
         </div>
       </div>

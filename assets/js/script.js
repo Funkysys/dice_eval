@@ -13,6 +13,10 @@ const scores = document.querySelectorAll('.score')
 const winner1 = document.querySelector('.win1')
 const winner2 = document.querySelector('.win2')
 const dice = [...document.querySelectorAll(".dice-list")]
+const diceDiv = document.querySelector('.dice')
+const openModal = document.querySelector('.newGame h3')
+const closeModal = document.querySelector('.close')
+const rules = document.querySelector('.rules')
 let turn = 1
 let round = 0
 let scorePlayer1 = 0
@@ -34,9 +38,9 @@ window.addEventListener('load', () => {
     .to(divPlayer2, {y: "-100", opacity : '1'}, '-=0.6')
     .to(namePlayer1, {opacity : '1'}, '-=0.6')
     .to(namePlayer2, {opacity : '1'}, '-=0.6')
-    .to('.player', {opacity: 1}, '-=0.5')
-    .to(".scorePlayer1", {opacity : "1", x: '+200'}, '-=0.6')
-    .to(".scorePlayer2", {opacity : "1", x: '-200'}, '-=0.6')
+    .to('.player', {opacity: 1}, '-=0.1')
+    .to(".scorePlayer1", {opacity : "1", x: '+200'}, '-=0.3')
+    .to(".scorePlayer2", {opacity : "1", x: '-200'}, '-=0.5')
     .to('.newGame', {opacity: 1, y: -40}, '-=0.4')
     .to('.dice', {opacity: 1, y: -50}, '-=0.2')
 })
@@ -189,8 +193,22 @@ roll.addEventListener("click", () => {
         init()
     }
 });
+diceDiv.addEventListener("click", () => {
+    if (namePlayer1.textContent !== "") {
+        rollDice()
+    } else {
+        init()
+    }
+});
 
 newGame.addEventListener("click", init);
+openModal.addEventListener("click", () => {
+    gsap.to(rules, {y: '+1000'})
+});
+closeModal.addEventListener("click", () => {
+    gsap.to(rules, {y: '-1000'})
+});
+
 
 hold.addEventListener('click', () => {
     if (roundPlayer1.textContent !== "" || roundPlayer2.textContent !== "") {
